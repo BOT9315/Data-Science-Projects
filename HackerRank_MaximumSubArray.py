@@ -12,25 +12,23 @@
 ## At least one integer should be selected and put into the subarrays 
 ## (this may be required in cases where all elements are negative).
 
-t = int(input().strip())
-def max_subarray(A):
-    max_ending_here = max_so_far = 0
-    for x in A:
-        max_ending_here = max(0, max_ending_here + x)
+def max_contiguous(arr):
+    max_ending_here = max_so_far = arr[0]  # start from first element, not 0
+    for x in arr[1:]:
+        max_ending_here = max(x, max_ending_here + x)
         max_so_far = max(max_so_far, max_ending_here)
     return max_so_far
 
-for i in range(2*t):
-    k=int(input())
-    arr = [int(arr_temp) for arr_temp in input().strip().split(' ')]
-    if(all(item>0 for item in arr)):
-        print(sum(arr),sum(arr))
-    elif(all(item<0 for item in arr)):
-        print(max(arr),max(arr))
+def max_non_contiguous(arr):
+    # Must pick at least one element
+    positives = [x for x in arr if x > 0]
+    if positives:
+        return sum(positives)
     else:
-        c=0
-        for i in range(len(arr)):
-            if(c+arr[i]>c):
-                c+=arr[i]
-        print(max_subarray(arr),c)
-             
+        return max(arr)  # all non-positive: pick the largest (least negative)
+
+t = int(input().strip())
+for _ in range(t):  # Fix 1: range(t), not range(2*t)
+    k = int(input().strip())
+    arr = [int(x) for x in input().strip().split()]
+    print(max_contiguous(arr), max_non_contiguous(arr))
