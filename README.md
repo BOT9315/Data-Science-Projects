@@ -15,6 +15,7 @@ The goal of this challenge is to build a model that predicts the count of bike s
 I've recently discovered the Chris Albon Machine Learning flash cards and I want to download those flash cards but the official Twitter API has a limit rate of 2 weeks old tweets so I had to find a way to bypass this limitation : use Selenium and PhantomJS.  
 Purpose of this project : Check every 2 hours, if he posted new flash cards. In this case, download them and send me a summary email.
 
+
 ## [Face Recognition](https://github.com/alexattia/Data-Science-Projects/tree/master/FaceRecognition)
 
 Modern face recognition with deep learning and HOG algorithm. Using dlib C++ library, I have a quick face recognition tool using few pictures (20 per person).
