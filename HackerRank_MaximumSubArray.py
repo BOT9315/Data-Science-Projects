@@ -33,4 +33,29 @@ for i in range(2*t):
             if(c+arr[i]>c):
                 c+=arr[i]
         print(max_subarray(arr),c)
+
+
+"""
+#Corrected version:
+def max_contiguous(arr):
+    # Kadane's algorithm — must pick at least one element
+    max_ending_here = max_so_far = arr[0]
+    for x in arr[1:]:
+        max_ending_here = max(x, max_ending_here + x)
+        max_so_far = max(max_so_far, max_ending_here)
+    return max_so_far
+
+def max_non_contiguous(arr):
+    # Must pick at least one element
+    positives = [x for x in arr if x > 0]
+    if positives:
+        return sum(positives)
+    else:
+        return max(arr)  # all non-positive: pick the least negative
+
+t = int(input().strip())
+for _ in range(t):
+    k = int(input().strip())
+    arr = [int(x) for x in input().strip().split()]
+    print(max_contiguous(arr), max_non_contiguous(arr))
              
