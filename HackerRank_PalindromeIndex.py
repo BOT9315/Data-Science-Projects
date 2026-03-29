@@ -33,3 +33,30 @@ def solve(s):
 for i in range(n):
     x=a[i]
     print(solve(x))
+
+
+
+"""
+#Cleaned-up version:
+
+
+def is_palindrome(s):
+    return s == s[::-1]  # Pythonic, clean
+
+def solve(s):
+    left, right = 0, len(s) - 1
+    while left < right:
+        if s[left] != s[right]:
+            # Try removing either the left or right character
+            if is_palindrome(s[left+1:right+1]):
+                return left
+            else:
+                return right
+        left += 1
+        right -= 1
+    return -1  # already a palindrome
+
+n = int(input().strip())
+for _ in range(n):
+    s = input().strip()
+    print(solve(s))
