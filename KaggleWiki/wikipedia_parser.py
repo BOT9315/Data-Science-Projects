@@ -64,6 +64,7 @@ def get_formation(link_bio):
         return convert_formation(re.sub(r'\[*\d*\]', '', s))
     except:
         print('Error for %s' % link_bio)
+        
 
 def get_previous_government_link(browser, link):
     try:
